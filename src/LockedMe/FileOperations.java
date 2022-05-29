@@ -1,10 +1,15 @@
 package LockedMe;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class FileOperations {
 	
@@ -63,7 +68,44 @@ public class FileOperations {
 			System.out.println();
 			return fileListNames;
 	}
+
+public static void addFile(String fileToAdd, Scanner sc) {
+	FileOperations.directoryifnotexist("Main");
+	Path FilePath = Paths.get("./main/" + fileToAdd);
+	try {
+		Files.createDirectories(FilePath.getParent());
+		Files.createFile(FilePath);
+		System.out.println(fileToAdd + " successfully created ");
+
+		System.out.println("Do you like to add some content to the file? (Y/N)");
+		String choice = sc.next().toLowerCase();
+
+		sc.nextLine();
+		if (choice.equals("y")) {
+			System.out.println("\n\nInput content and press enter\n");
+			String content = sc.nextLine();
+			Files.write(FilePath, content.getBytes());
+			System.out.println("\nContent written to file " + fileToAdd);
+			System.out.println("Content can be read using Notepad or Notepad++");
+		}
+
+	} catch (IOException e) {
+		System.out.println("Failed to create file " + fileToAdd);
+		System.out.println(e.getClass().getName());
+	}
+
+}
+
+
+/*public static void deleteFile()
+{
 	
+
+}
+public static void searchFile()
+{
 	
+
+}*/
 
 }
