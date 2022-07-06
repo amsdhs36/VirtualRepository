@@ -53,16 +53,17 @@ public class UserChoice {
 					System.out.println("Enter the name of the file to be added to the Main folder");
 					String fileToAdd = sc.next();
 					FileOperations.addFile(fileToAdd, sc);
-					
+					break;	
+				case 2: 
+					System.out.println("Enter the name of the file to be deleted");
+					String fileToDel=sc.next();
+					FileOperations.deleteFile(fileToDel);
 					break;
-		/*     	case 2:
-					System.out.println("Enter the name fo the file to be deleted from the Main folder");
-					String fileToDelete=sc.next();
-					FileOperations.deleteFile();
+				 case 3:
+				    System.out.println("Enter the file to be searched");
+				    String fileToSearch=sc.next();
+				    FileOperations.searchFile(fileToSearch);
 					break;
-				case 3:
-					FileOperations.searchFile();
-					break;*/
 				case 4:
 					return;
 				case 5:

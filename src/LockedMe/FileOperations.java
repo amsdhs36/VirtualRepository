@@ -1,6 +1,7 @@
 package LockedMe;
 
 import java.io.File;
+//import java.io.FilenameFilter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,6 +11,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+
+
 
 public class FileOperations {
 	
@@ -30,7 +33,7 @@ public class FileOperations {
 			// listFilesInDirectory displays files along with folder structure
 			List<String> filesListNames = FileOperations.listDirectoryFiles(path, 0, new ArrayList<String>());
 
-			System.out.println("Displaying all files in ascending order\n");
+		    System.out.println("Displaying all files in ascending order\n");
 			Collections.sort(filesListNames);
 
 			filesListNames.stream().forEach(System.out::println);
@@ -57,6 +60,8 @@ public class FileOperations {
 						fileListNames.add(file.getName());
 						listDirectoryFiles(file.getAbsolutePath(), Count + 1, fileListNames);
 					} else {
+	
+						
 						System.out.println("|-- " + file.getName());
 						fileListNames.add(file.getName());
 					}
@@ -77,35 +82,71 @@ public static void addFile(String fileToAdd, Scanner sc) {
 		Files.createFile(FilePath);
 		System.out.println(fileToAdd + " successfully created ");
 
-		System.out.println("Do you like to add some content to the file? (Y/N)");
-		String choice = sc.next().toLowerCase();
-
-		sc.nextLine();
-		if (choice.equals("y")) {
-			System.out.println("\n\nInput content and press enter\n");
-			String content = sc.nextLine();
-			Files.write(FilePath, content.getBytes());
-			System.out.println("\nContent written to file " + fileToAdd);
-			System.out.println("Content can be read using Notepad or Notepad++");
-		}
-
+		
 	} catch (IOException e) {
-		System.out.println("Failed to create file " + fileToAdd);
+		System.out.println("Failed,file not created " + fileToAdd);
 		System.out.println(e.getClass().getName());
 	}
 
 }
 
 
-/*public static void deleteFile()
+public static void deleteFile(String fileToDel)
 {
+   FileOperations.directoryifnotexist("Main");
+   Path Filepath=Paths.get("./main/"+fileToDel);
+   try
+   {  
+     Files.delete(Filepath);
+     System.out.println(fileToDel+" deleted successfully");
+   }
+   catch (IOException e)
+   {
+	   System.out.println("Failed, filed not deleted"+ fileToDel);
+	   System.out.println(e.getClass().getName());
+	   
+   }
+}
+
+public static void searchFile(String fileToSearch)
+{
+	File directory=new File("main/");
+	String[] fileList=directory.list();
+	
+	int flag=0;
+	if(fileList==null)
+	{
+		System.out.println("Empty Directory");
+	}
+	else
+		for(int i=0;i<fileList.length;i++)
+		{
+			String filename=fileList[i];
+			if(filename.equalsIgnoreCase(fileToSearch))
+			{
+				System.out.println(filename+" file found in main folder");
+				flag=1;
+				
+				Path currentRelativePath=Paths.get(directory.getAbsolutePath());
+				String s=currentRelativePath.toAbsolutePath().toString();
+				System.out.println("main is located at "+s);
+				
+			}
+		}
+	if(flag==0)
+	{
+		System.out.println("File not found");	
+	}
+	
+ 
 	
 
+	}
+
+	
 }
-public static void searchFile()
-{
+
 	
 
-}*/
 
-}
+
