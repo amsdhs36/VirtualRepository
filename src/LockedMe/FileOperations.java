@@ -94,7 +94,7 @@ public static void addFile(String fileToAdd, Scanner sc) {
 public static void deleteFile(String fileToDel)
 {
    FileOperations.directoryifnotexist("Main");
-   Path Filepath=Paths.get("./main/"+fileToDel);
+   Path Filepath=Paths.get("./Main/"+fileToDel);
    try
    {  
      Files.delete(Filepath);
@@ -110,7 +110,7 @@ public static void deleteFile(String fileToDel)
 
 public static void searchFile(String fileToSearch)
 {
-	File directory=new File("main/");
+	File directory=new File("Main/");
 	String[] fileList=directory.list();
 	
 	int flag=0;
@@ -137,8 +137,6 @@ public static void searchFile(String fileToSearch)
 	{
 		System.out.println("File not found");	
 	}
-	
- 
 	
 
 	}
