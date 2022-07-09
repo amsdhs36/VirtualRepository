@@ -27,7 +27,7 @@ public class FileOperations {
 
 		public static void displayAllFiles(String path) {
 			FileOperations.directoryifnotexist("Main");
-			// All required files and folders inside "main" folder relative to current folder
+			// All required files and folders inside "main" folder
 			System.out.println("Displaying all files form the directory structure\n");
 
 			// listFilesInDirectory displays files along with folder structure
@@ -138,7 +138,6 @@ public static void searchFile(String fileToSearch)
 		System.out.println("File not found");	
 	}
 	
-
 	}
 
 	

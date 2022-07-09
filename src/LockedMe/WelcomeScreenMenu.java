@@ -20,7 +20,7 @@ public class WelcomeScreenMenu {
 		System.out.println(menu);
 
 	}
-	//Display the sub menu: add, delete and search file
+	//Display the sub menu: add, delete,search file,return to previous menu
 	public static void displaySubMenu() {
 		String menu2="\n\nSelect any option from Submenu and press Enter\n\n"
 				+ "1. Add the file\n"
